@@ -1,0 +1,60 @@
+﻿@using MKT.DataAccess.Constants
+@model MKT.WebUI.Models.Appointment.AppointmentLocationListViewModel
+
+@{
+    ViewBag.Title = "Workshop List";
+    Layout = "_Layout";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Assigned Workshop List</h6>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered display w-100 mkt-datatable" id="workshopTableId">
+                            <thead>
+                                <tr>
+                                    <th>Customer Name</th>
+                                    <th>Customer Lastname</th>
+                                   
+                                    @if (User.IsInRole(ROLE.ADMIN) || User.IsInRole(ROLE.MODERATOR))
+                                    {
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Price</th>
+                                    }
+                                    <th>Assigned Location</th>
+                                    <th>Workshop Location</th>
+                                    <th>Workshop Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var locationOrder in Model.LocationOrder)
+                                {
+                                    <tr>
+                                        <td>@locationOrder.CustomerName</td>
+                                        <td>@locationOrder.CustomerLastname</td>
+                                        <td>@locationOrder.ContactEmail</td>
+                                        <td>@locationOrder.ContactTelno</td>
+                                        @if (User.IsInRole(ROLE.ADMIN) || User.IsInRole(ROLE.MODERATOR))
+                                        {
+                                        <td>@locationOrder.Price.ToString("C")</td>
+                                        }
+                                        <td>@locationOrder.Location.LocationName</td>
+                                        <td>@locationOrder.WorkshoLocation</td>
+                                        <td>@(locationOrder.WorkshopDate.HasValue ? locationOrder.WorkshopDate.Value.ToString("dd/MM/yyyy hh:mm:ss tt") : "No date time specified") </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

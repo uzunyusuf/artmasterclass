@@ -1,0 +1,51 @@
+﻿@model MKT.WebUI.Models.Announcement.AnnouncementListViewModel
+
+@{
+    ViewBag.Title = "Announcement List";
+    Layout = "_Layout";
+}
+
+@section csses
+{
+<link href="~/css/MktTimeLine.css" rel="stylesheet" />
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xl-6 col-lg-12 col-md-12">
+            <div class="card shadow">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Announcements</h6>
+                </div>
+                <div class="card-body">
+                    <div class="apland-timeline-area">
+                        
+                        @foreach (var announcement in Model.AnnouncementList.OrderByDescending(a => a.Date))
+                        {
+                            <div class="single-timeline-area">
+                                <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
+                                    <p>@announcement.Date.ToString("dd/MM/yyyy hh:mm tt")</p>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                                        <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
+                                            <div class="timeline-icon"><i class="text-white fa fa-address-card" aria-hidden="true"></i></div>
+                                            <div class="timeline-text">
+                                                <h6>@announcement.Title</h6>
+                                                <p>@announcement.Description</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-xl-6 col-lg-12 col-md-12">
+            <img src="/asset/announcement_picture.png" alt="Announcement Picture" class="img-fluid img-thumbnail" />
+        </div>
+    </div>
+</div>

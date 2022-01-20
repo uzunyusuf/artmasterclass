@@ -1,0 +1,68 @@
+﻿@using MKT.WebUI.Models.Admin
+@model CompaniesViewModel
+
+@{
+    ViewBag.Title = "Companies";
+    Layout = "_Layout";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card shadow">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Locations</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered display w-100 mkt-datatable">
+                        <thead>
+                            <tr>
+                                <th>Location id</th>
+                                <th>Location Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(var location in Model.Locations)
+                            {
+                            <tr>
+                                <td>@location.Id</td>
+                                <td>@location.LocationName</td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="companyModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-gradient-primary text-white">
+                <h5 class="modal-title">Add Location</h5>
+                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form asp-controller="Admin" asp-action="Locations" method="post">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label><b>Location Name</b></label>
+                        <input class="form-control form-control-sm" asp-for="Location.LocationName" placeholder="Location Name" />
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="PostWithFormRedirect(this)">Add Location</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+<script src="~/js/Controller/Admin/Companies.js?v=1"></script>
+}

@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] | Art Masterclass</title>
+    <link href="~/lib/sbadmin2/sb-admin-2.css" rel="stylesheet" />
+    <link href="~/lib/fontawesome-5.15.3-web/css/all.css" rel="stylesheet" />
+    <link href="~/lib/Datatables/datatables.css" rel="stylesheet" />
+    <link href="~/lib/Select2/select2.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/js/plugins/datatables/datatables.css" rel="stylesheet" />
+    <link href="~/js/plugins/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+    <link href="~/js/plugins/datepicker/css/bootstrap-datepicker3.css" rel="stylesheet" />
+    <link href="~/js/plugins/daterangepicker/daterangepicker.css?v=1" rel="stylesheet" />
+    <link href="~/css/bootstrap-treeview.min.css" rel="stylesheet" />
+    <link href="~/js/Plugins/morrisjs/morris.css" rel="stylesheet" />
+    <link href="~/js/Plugins/morrisjs/morrisnoble.css" rel="stylesheet" />
+    @await RenderSectionAsync("csses", required: false)
+</head>
+<body id="page-top">
+    <div id="wrapper">
+        <!-- Sidebar -->
+        @await Component.InvokeAsync("Sidebar")
+
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                <!-- Nav -->
+                @await Component.InvokeAsync("Navbar")
+                <!-- Main -->
+                @RenderBody()
+            </div>
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>&copy; 2022 - Art Masterclass Appointment Management System</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+        </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/fontawesome-5.15.3-web/js/all.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+    <script src="~/js/sb-admin-2.js"></script>
+    <script src="~/js/plugins/select2.min.js"></script>
+    <script src="~/js/plugins/datatables/datatables.js"></script>
+    <script src="~/js/plugins/bootstrap-treeview.min.js"></script>
+    <script src="~/js/plugins/sweetalert.min.js"></script>
+    <script src="~/js/plugins/sweetalert2/sweetalert2.all.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/plugins/datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="~/js/plugins/autoNumeric.js"></script>
+    <script src="~/js/plugins/daterangepicker/moment.min.js"></script>
+    <script src="~/js/plugins/daterangepicker/daterangepicker.js"></script>
+    <script src="~/js/plugins/dataTables.bootstrap.min.js"></script>
+    <script src="~/js/plugins/inputmask/jquery.inputmask.js"></script>
+    <script src="~/js/Plugins/raphael-min.js"></script>
+    <script src="~/js/Plugins/chart.js"></script>
+    <script src="~/js/Plugins/morrisjs/morris.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @if (User.Identity is { IsAuthenticated: true })
+    {
+        <script type="text/javascript" src="~/js/AuthorizedUser.js" asp-append-version="true"></script>
+    }
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

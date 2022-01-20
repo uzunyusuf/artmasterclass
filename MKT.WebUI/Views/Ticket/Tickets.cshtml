@@ -1,0 +1,31 @@
+﻿@model MKT.WebUI.Models.Ticket.TicketsViewModel
+
+@{
+    ViewBag.Title = "Ticket List";
+    Layout = "_Layout";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Ticket List</h6>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        @foreach (var ticket in Model.Tickets)
+                        {
+                            <li class="list-group-item text-xs" style="cursor: pointer;" onclick="console.log('assert')">@ticket.Title <span class="float-right">@ticket.TicketOwner.NameSurname</span></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    @*buraya script ekleyip tıklanan list elemeanının ticket detay sayfasına gitmesini ve orada cevaplama mekaniklerini yazalım*@
+}
