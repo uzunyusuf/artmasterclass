@@ -8,6 +8,7 @@
     <Folder Include="Models\Announcement\" />
     <Folder Include="Models\Home\" />
     <Folder Include="Models\Ticket\" />
+    <Folder Include="Filter\" />
     <Folder Include="Pages\" />
     <Folder Include="wwwroot\lib\Select2\" />
   </ItemGroup>

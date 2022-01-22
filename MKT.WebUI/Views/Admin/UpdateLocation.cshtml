@@ -1,0 +1,28 @@
+﻿@model MKT.WebUI.Models.Admin.UpdateLocationViewModel
+
+@{
+    ViewBag.Title = "Location Update";
+    Layout = "_Layout";
+}
+
+<div class="container-fluid">
+    <div class="col-12">
+        <div class="card shadow">
+            <div class="card-header">
+                <h6 class="font-weight-bold text-primary">Update @Model.Location.LocationName</h6>
+            </div>
+            <div class="card-body">
+                <form asp-controller="Admin" asp-action="UpdateLocation" method="post">
+                    <input type="text" asp-for="Location.Id" class="d-none" />
+                    <div class="form-group">
+                        <label><b>Location Name</b></label>
+                        <input class="form-control form-control-sm" asp-for="Location.LocationName" placeholder="Location name" />
+                    </div>
+                    <div class="row justify-content-end mt-2">
+                        <button type="submit" class="btn btn-primary">Update Location</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

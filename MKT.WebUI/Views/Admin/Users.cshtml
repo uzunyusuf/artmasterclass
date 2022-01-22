@@ -23,17 +23,21 @@
                                 <th>Email</th>
                                 <th>Role</th>
                                 <th>Location</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach(var user in Model.USers)
                             {
-                                <tr>
+                                <tr onclick="window.location.href='/Admin/UpdateUser/@user.Id'" style="cursor: pointer;"> 
                                     <td>@user.UserName</td>
                                     <td>@user.NameSurname</td>
                                     <td>@user.Email</td>
                                     <td>@user.Rol</td>
                                     <td>@user.Location.LocationName</td>
+                                    <td>
+                                            <a asp-controller="Admin" asp-action="UserPassive" asp-route-userId="@user.Id" class="btn btn-@(user.IsDeleted ? "success": "danger")">@(user.IsDeleted ? "Active" : "Passive")</a>
+                                    </td>
                                 </tr>
                             }
                             </tbody>

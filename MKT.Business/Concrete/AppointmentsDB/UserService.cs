@@ -51,6 +51,32 @@ namespace MKT.Business.Concrete.AppointmentsDB
             base.Add(user);
         }
 
+        public void Update(TblUser user)
+        {
+            if (string.IsNullOrEmpty(user.UserName))
+            {
+                throw new Exception("username cannot be empty");
+            }
+            if (string.IsNullOrEmpty(user.NameSurname))
+            {
+                throw new Exception("user name and surname cannot be empty");
+            }
+            if (string.IsNullOrEmpty(user.Email))
+            {
+                throw new Exception("user email cannot be empty");
+            }
+            if (user.LocationId == 0)
+            {
+                throw new Exception("Please choose a location");
+            }
+            if (string.IsNullOrEmpty(user.Rol))
+            {
+                throw new Exception("Please choose a role");
+            }
+
+            base.Update(user);
+        }
+
         public TblUser GetLoggedUser()
         {
             if (_context.HttpContext.User.Identity == null) return null;

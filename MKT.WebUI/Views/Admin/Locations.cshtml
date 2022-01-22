@@ -24,7 +24,7 @@
                         <tbody>
                             @foreach(var location in Model.Locations)
                             {
-                            <tr>
+                            <tr onclick="window.location.href='/Admin/UpdateLocation/@location.Id'" style="cursor: pointer;">
                                 <td>@location.Id</td>
                                 <td>@location.LocationName</td>
                             </tr>

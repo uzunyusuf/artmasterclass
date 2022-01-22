@@ -94,7 +94,7 @@
                                                     @for(var index = 1; index < order.LineItems.Count;index++)
                                                     {
                                                         <dt class="col-sm-3">@(index == 1 ? "Extras: " : "")</dt>
-                                                        <dd class="col-sm-9">@(order.LineItems[index].Quantity > 1 ? $"{@order.LineItems[index].Quantity} x " : "") @order.LineItems[index].Price @order.Currency</dd>
+                                                        <dd class="col-sm-9">@(order.LineItems[index].Quantity > 1 ? $"{@order.LineItems[index].Quantity} x " : "") @order.LineItems[index].Name @order.LineItems[index].Price @order.Currency</dd>
                                                     }
                                                 }
                                             </dl>
