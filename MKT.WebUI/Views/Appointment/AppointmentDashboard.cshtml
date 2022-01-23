@@ -46,7 +46,7 @@
                                     <div class="d-flex flex-row justify-content-@(order.LocationOrder == null ? "start" : "between") header-main-flex">
                                         <div class="d-flex flex-row">
                                             <h6 class="@(order.LocationOrder == null ? "text-primary" : "text-white font-weight-bold")">@order.Customer.FirstName @order.Customer.LastName</h6>
-                                            <h6 class="ml-1 font-weight-bold @(order.LocationOrder == null ? "text-success" : "text-white ")">Total: @order.CurrentSubtotalPrice @order.Currency</h6>
+                                            <h6 class="ml-1 font-weight-bold @(order.LocationOrder == null ? "text-success" : "text-white ")">Subtotal price: @order.CurrentSubtotalPrice @order.Currency</h6>
                                         </div>
                                         <h6 class="text-white">
                                             @if (order.LocationOrder != null)
@@ -71,7 +71,7 @@
                                                 <dd class="col-sm-9">@order.Customer.Email</dd>
 
                                                 <dt class="col-sm-3">Phone:</dt>
-                                                <dd class="col-sm-9">@order.Customer.Phone</dd>
+                                                <dd class="col-sm-9">@order.Customer.DefaultAddress.Phone</dd>
 
                                                 <dt class="col-sm-3">Payment Method:</dt>
                                                 <dd class="col-sm-9">@(string.Join(", ", order.PaymentGatewayNames))</dd>
@@ -101,28 +101,7 @@
                                             <div class="position-absolute text-muted" style="bottom: 0; right: 0;">Transaction date: @order.CreatedAt.ToString("dd/MM/yyyy hh:mm:ss tt")</div>
                                         </div>
                                     </div>
-                                    
-                                    
-                                    @*
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Total Price (Annual)
-                                            </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">@order.CurrentSubtotalPrice @order.Currency</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-dollar-sign fa-2x text-primary"></i>
-                                        </div>
-                                    </div>
-                                    @foreach (var lineItem in order.LineItems)
-                                    {
-                                        <div class="row no-gutters align-items-center">
-                                            @lineItem.Name
-                                            @(lineItem.Price + " " + lineItem.PriceSet.PresentmentMoney.CurrencyCode)
-                                        </div>
-                                    }
-                                    *@
+
                                 </div>
                             </div>
                         </button>

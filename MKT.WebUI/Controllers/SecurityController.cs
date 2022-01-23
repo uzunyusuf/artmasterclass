@@ -40,7 +40,7 @@ namespace MKT.WebUI.Controllers
                 return View(model);
             }
 
-            var loginUser = _userService.Get(u => u.UserName.Equals(model.User.UserName), u => u.Location);
+            var loginUser = _userService.Get(u => u.UserName.Equals(model.User.UserName) && !u.IsDeleted, u => u.Location);
             if (loginUser == null)
             {
                 ViewData["ErrorMessage"] = "username or password is incorrect";
