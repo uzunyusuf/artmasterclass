@@ -276,23 +276,26 @@ function initializeDateRangePicker() {
     cbmaxDateToday(moment().subtract(29, 'days'), moment());
 
 
-    mktDaterangePicker = $('.mkt-daterangepicker-max-date-todayer').daterangepicker({
+    mktDaterangePicker = $('.mkt-daterangepicker').daterangepicker({
         "opens": "auto",
         "locale": {
             "format": "YYYY/MM/DD",
             "separator": "-",
             "firstDay": 1
         },
+        "startDate": moment().subtract(1,'days'),
+        "endDate": moment(),
         ranges: {
-            'Today': [moment(), moment()],
+            'Today': [moment().subtract(1,'days'), moment()],
             'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-            'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-            'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+            'Last Week': [moment().subtract(7, 'days'), moment()],
+            'Last 30 days': [moment().subtract(30, 'days'), moment()],
             'This Month': [moment().startOf('month'), moment().endOf('month')],
             'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
         },
         alwaysShowCalendars: true
     }, cb);
+
 
     mktDaterangePicker = $('.mkt-daterangepicker-max-date-today').daterangepicker({
         "opens": "auto",
@@ -302,9 +305,11 @@ function initializeDateRangePicker() {
             "separator": "-",
             "firstDay": 1
         },
+        "startDate": moment().subtract(1, 'days'),
+        "endDate": moment(),
         ranges: {
-            'Today': [moment(), moment()],
-            'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+            'Today': [moment().subtract(1,'days'), moment()],
+            'Yesterday': [moment().subtract(2, 'days'), moment().subtract(1, 'days')],
             'Last 7 Days': [moment().subtract(6, 'days'), moment()],
             'Last 30 Days': [moment().subtract(29, 'days'), moment()],
             'This Month': [moment().startOf('month'), moment().endOf('month')],

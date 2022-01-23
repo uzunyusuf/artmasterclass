@@ -31,3 +31,7 @@ $(function() {
         });
 });
 
+$(function() {
+    $('#notificationDropdown').parent().on('shown.bs.dropdown', function () {
+    });
+});
