@@ -45,7 +45,6 @@ namespace MKT.DataAccess.Model.AppointmentDB
         [StringLength(250)]
         public string WorkshoLocation { get; set; }
         [Required]
-        [StringLength(8000)]
         public string OrderJson { get; set; }
 
         [ForeignKey(nameof(LocationId))]

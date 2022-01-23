@@ -72,7 +72,15 @@ namespace MKT.Business.Concrete.AppointmentsDB
                     OrderJson = orderJson
                 };
 
-                base.Add(locationOrder);
+                try
+                {
+                    base.Add(locationOrder);
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Unexpected error to save location with " + orderId + " and location id: " + locationId);
+                }
+               
             }
         }
 
