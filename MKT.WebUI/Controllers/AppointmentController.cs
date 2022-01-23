@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using MKT.Business.Abstract.AppointmentsDB;
 using MKT.DataAccess.Constants;
 using MKT.DataAccess.Model.AppointmentDB;
@@ -12,6 +13,7 @@ using MKT.WebUI.Tools;
 
 namespace MKT.WebUI.Controllers
 {
+    [Authorize]
     public class AppointmentController : Controller
     {
         private readonly IAppointmentShopifyService _appointmentShopifyService;

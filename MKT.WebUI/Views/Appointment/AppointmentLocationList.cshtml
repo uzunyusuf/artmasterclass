@@ -49,11 +49,11 @@
                                     <tr>
                                         <td>@locationOrder.CustomerName</td>
                                         <td>@locationOrder.CustomerLastname</td>
-                                        <td>@locationOrder.ContactEmail</td>
-                                        <td>@locationOrder.ContactTelno</td>
                                         @if (User.IsInRole(ROLE.ADMIN) || User.IsInRole(ROLE.MODERATOR))
                                         {
-                                        <td>@locationOrder.Price.ToString("C")</td>
+                                            <td>@locationOrder.ContactEmail</td>
+                                            <td>@locationOrder.ContactTelno</td>
+                                            <td>@locationOrder.Price.ToString("C")</td>
                                         }
                                         <td>@locationOrder.Location.LocationName</td>
                                         <td>@locationOrder.WorkshoLocation</td>
