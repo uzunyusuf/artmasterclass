@@ -1,2 +1,1 @@
 Scaffold-DbContext "Server=tcp:mkt-appointment.database.windows.net,1433;Initial Catalog=Appointment;Persist Security Info=False;User ID=mktbilgiislem;Password=Melisakoray1923;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" Microsoft.EntityFrameworkCore.SqlServer -Project MKT.DataAccess -OutputDir Model/AppointmentDB -DataAnnotations -Force 
-

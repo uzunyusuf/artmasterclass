@@ -60,6 +60,8 @@ namespace MKT.DataAccess.Model.AppointmentDB
 
                 entity.Property(e => e.LineItems).IsUnicode(false);
 
+                entity.Property(e => e.OrderJson).IsUnicode(false);
+
                 entity.Property(e => e.WorkshoLocation).IsUnicode(false);
 
                 entity.HasOne(d => d.Location)

@@ -30,6 +30,11 @@ namespace MKT.Business.Concrete.AppointmentsDB
         public async Task SaveOrdertoLocation(long orderId, int locationId)
         {
             var order = await _appointmentShopifyService.GetOrder(orderId);
+
+            if (order == null)
+            {
+                throw new Exception("order cannot accessed with id: " + orderId);
+            }
             
             decimal price = -1;
             try
@@ -49,6 +54,7 @@ namespace MKT.Business.Concrete.AppointmentsDB
             else
             {
                 var lineItemsString = JsonConvert.SerializeObject(order.Order.LineItems);
+                var orderJson = JsonConvert.SerializeObject(order);
 
                 var locationOrder = new TblOrder
                 {
@@ -62,7 +68,8 @@ namespace MKT.Business.Concrete.AppointmentsDB
                     AssignedDate = DateTime.Now,
                     ContactTelno = string.IsNullOrEmpty(order.Order.BillingAddress.Phone) ? "-" : order.Order.BillingAddress.Phone,
                     WorkshopDate = getWorkshopDateTime(order.Order.LineItems,order.Order.Id),
-                    WorkshoLocation = getWorkshopLocation(order.Order.LineItems)
+                    WorkshoLocation = getWorkshopLocation(order.Order.LineItems),
+                    OrderJson = orderJson
                 };
 
                 base.Add(locationOrder);

@@ -34,7 +34,7 @@ namespace MKT.DataAccess.Model.AppointmentDB
         public int LocationId { get; set; }
         [Column("price", TypeName = "money")]
         public decimal Price { get; set; }
-        [Column(TypeName = "datetime")]
+        [Column(TypeName = "date")]
         public DateTime? WorkshopDate { get; set; }
         [Required]
         [StringLength(4096)]
@@ -44,6 +44,9 @@ namespace MKT.DataAccess.Model.AppointmentDB
         [Required]
         [StringLength(250)]
         public string WorkshoLocation { get; set; }
+        [Required]
+        [StringLength(8000)]
+        public string OrderJson { get; set; }
 
         [ForeignKey(nameof(LocationId))]
         [InverseProperty(nameof(TblLocation.TblOrders))]

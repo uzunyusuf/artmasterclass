@@ -1,9 +1,16 @@
 ﻿@using MKT.DataAccess.Constants
+@using MKT.DataAccess.Model.AppointmentApiModel
+@using MKT.DataAccess.Model.AppointmentDB
+@using Newtonsoft.Json
 @model MKT.WebUI.Models.Appointment.AppointmentLocationListViewModel
 
 @{
     ViewBag.Title = "Workshop List";
     Layout = "_Layout";
+}
+
+@{
+    Order order = null;
 }
 
 <div class="container-fluid">
@@ -20,7 +27,6 @@
                                 <tr>
                                     <th>Customer Name</th>
                                     <th>Customer Lastname</th>
-                                   
                                     @if (User.IsInRole(ROLE.ADMIN) || User.IsInRole(ROLE.MODERATOR))
                                     {
                                         <th>Email</th>
@@ -30,11 +36,16 @@
                                     <th>Assigned Location</th>
                                     <th>Workshop Location</th>
                                     <th>Workshop Date</th>
+                                    @if (User.IsInRole(ROLE.ADMIN) || User.IsInRole(ROLE.MODERATOR))
+                                    {
+                                        <th>Payment Method</th>
+                                    }
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach (var locationOrder in Model.LocationOrder)
                                 {
+                                    order = JsonConvert.DeserializeObject<Order>(locationOrder.OrderJson);
                                     <tr>
                                         <td>@locationOrder.CustomerName</td>
                                         <td>@locationOrder.CustomerLastname</td>
@@ -47,6 +58,10 @@
                                         <td>@locationOrder.Location.LocationName</td>
                                         <td>@locationOrder.WorkshoLocation</td>
                                         <td>@(locationOrder.WorkshopDate.HasValue ? locationOrder.WorkshopDate.Value.ToString("dd/MM/yyyy hh:mm:ss tt") : "No date time specified") </td>
+                                        @if (User.IsInRole(ROLE.ADMIN) || User.IsInRole(ROLE.MODERATOR))
+                                        {
+                                            <td>@(order != null ? string.Join(", ", order.PaymentGatewayNames) : "")</td>
+                                        }
                                     </tr>
                                 }
                             </tbody>
