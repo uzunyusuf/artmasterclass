@@ -46,7 +46,7 @@
                                     <div class="d-flex flex-row justify-content-@(order.LocationOrder == null ? "start" : "between") header-main-flex">
                                         <div class="d-flex flex-row">
                                             <h6 class="@(order.LocationOrder == null ? "text-primary" : "text-white font-weight-bold")">@order.Customer.FirstName @order.Customer.LastName</h6>
-                                            <h6 class="ml-1 font-weight-bold @(order.LocationOrder == null ? "text-success" : "text-white ")">Subtotal price: @order.CurrentSubtotalPrice @order.Currency</h6>
+                                            <h6 class="ml-1 font-weight-bold @(order.LocationOrder == null ? "text-success" : "text-white ")">Subtotal price: @order.CurrentSubtotalPrice @(ParseTip(order.TotalTipReceived) != 0 ? " | Total tip: " + ParseTip(order.TotalTipReceived) : "")  </h6>
                                         </div>
                                         <h6 class="text-white">
                                             @if (order.LocationOrder != null)
@@ -150,4 +150,17 @@
 
 @section Scripts {
 <script src="~/js/Controller/Appointment/AppointmentDashboard.js?v=1"></script>
+}
+
+@functions
+{
+    double ParseTip(string tip)
+    {
+        if (double.TryParse(tip, out double tipResult))
+        {
+            return tipResult;
+        }
+        return 0;
+
+    }
 }

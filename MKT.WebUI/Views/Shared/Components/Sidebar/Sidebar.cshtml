@@ -43,8 +43,25 @@
                 </div>
             </div>
         </li>
-    
     }
+    
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#tanimCollapse" aria-expanded="true">
+            <i class="far fa-fw fa-file-archive"></i>
+            <span>Appointment</span>
+        </a>
+        <div id="tanimCollapse" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Appointment:</h6>
+                @if (User.IsInRole(ROLE.ADMIN) || User.IsInRole(ROLE.MODERATOR))
+                {
+                    <a class="collapse-item" asp-controller="Appointment" asp-action="AppointmentDashboard">Appointment Dashboard</a>
+                }
+                
+                <a class="collapse-item" asp-controller="Appointment" asp-action="AppointmentLocationList">Assigned Workshop List</a>
+            </div>
+        </div>
+    </li>
 
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#announcementCollapse" aria-expanded="true">
@@ -63,23 +80,6 @@
         </div>
     </li>
 
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#tanimCollapse" aria-expanded="true">
-            <i class="far fa-fw fa-file-archive"></i>
-            <span>Appointment</span>
-        </a>
-        <div id="tanimCollapse" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Appointment:</h6>
-                @if (User.IsInRole(ROLE.ADMIN) || User.IsInRole(ROLE.MODERATOR))
-                {
-                    <a class="collapse-item" asp-controller="Appointment" asp-action="AppointmentDashboard">Appointment Dashboard</a>
-                }
-                
-                <a class="collapse-item" asp-controller="Appointment" asp-action="AppointmentLocationList">Assigned Workshop List</a>
-            </div>
-        </div>
-    </li>
 
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#ticketCollapse" aria-expanded="true">
