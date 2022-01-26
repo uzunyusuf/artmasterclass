@@ -16,6 +16,7 @@
     <link href="~/css/bootstrap-treeview.min.css" rel="stylesheet" />
     <link href="~/js/Plugins/morrisjs/morris.css" rel="stylesheet" />
     <link href="~/js/Plugins/morrisjs/morrisnoble.css" rel="stylesheet" />
+    <link href="~/lib/apexcharts/dist/apexcharts.css" rel="stylesheet" />
     @await RenderSectionAsync("csses", required: false)
 </head>
 <body id="page-top">
@@ -61,7 +62,8 @@
     <script src="~/js/plugins/inputmask/jquery.inputmask.js"></script>
     <script src="~/js/Plugins/raphael-min.js"></script>
     <script src="~/js/Plugins/chart.js"></script>
-    <script src="~/js/Plugins/morrisjs/morris.js"></script>
+<script src="~/js/Plugins/morrisjs/morris.js"></script>
+    <script src="~/lib/apexcharts/dist/apexcharts.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @if (User.Identity is { IsAuthenticated: true })
     {

@@ -7,7 +7,42 @@ $(function () {
     createChartDonnutsByMorris('/Home/PriceTotalByLocation', 'priceTotalByLocation', currencyFunc);
     CreateChart('/Home/TotalOrderByLocation', 'totalOrderByLocation', null);
     CreateChart('/Home/PriceTotalByLocation', null, 'priceTotalByLocationLineChart');
+    apexLinechart("/Home/DailyTotalEarning", "dailyEarningChart");
 });
+
+function apexLinechart(url, elemId) {
+    $.get(url, function(data, status) {
+        let dataArray = [];
+        let labelArray = [];
+        $.each(data, function(index, value) {
+            dataArray.push(value.value);
+            labelArray.push(value.label);
+        });
+        var options = {
+            series: [
+                {
+                    name: "Daily Earning",
+                    data: dataArray
+                }],
+            chart: {
+                type: 'line',
+                height: 350,
+                zoom: {enabled: false}
+            },
+            dataLabes: { enabled: false },
+            stroke: { curve: 'straight' },
+            grid: {
+                row: {
+                    colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+                    opacity: 0.5
+                },
+            },
+            xaxis: {categories: labelArray}
+        }
+        let chart = new ApexCharts(document.querySelector('#'+elemId), options);
+        chart.render();
+    });
+}
 
 function createChartDonnutsByMorris(url, elemId, formatFunc = null) {
     $.get(url, function (data, status) {
@@ -43,7 +78,6 @@ function CreateChart(url, pieCanvasElemId, barCanvasElemId) {
         displayCharts(pieCanvas, barCanvas, labelArray, dataArray, colorPoolbg);
     });
 }
-
 
 
 function displayCharts(piectx, barctx, labels, data, colors) {

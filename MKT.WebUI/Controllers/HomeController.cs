@@ -70,6 +70,14 @@ namespace MKT.WebUI.Controllers
             return new JsonResult(jsonResult);
         }
 
+        public IActionResult DailyTotalEarning()
+        {
+            var orderList = _orderService.GetList(o => o.WorkshopDate.HasValue);
+            var jsonResult = orderList.GroupBy(o => o.WorkshopDate.Value.Date).Select(
+                group => new { label = @group.Key, value = @group.Sum(g => g.Price) });
+            return new JsonResult(jsonResult);
+        }
+
         [HttpGet]
         public async Task<IActionResult> GetNotificationsAsync()
         {
