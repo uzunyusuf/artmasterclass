@@ -74,7 +74,7 @@ namespace MKT.WebUI.Controllers
         {
             var orderList = _orderService.GetList(o => o.WorkshopDate.HasValue);
             var jsonResult = orderList.GroupBy(o => o.WorkshopDate.Value.Date).Select(
-                group => new { label = @group.Key, value = @group.Sum(g => g.Price) });
+                group => new { label = @group.Key.ToString("dd/MM/yyyy"), value = @group.Sum(g => g.Price) });
             return new JsonResult(jsonResult);
         }
 

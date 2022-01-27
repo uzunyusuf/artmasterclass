@@ -96,7 +96,7 @@ namespace MKT.Business.Concrete.AppointmentsDB
                     Date = order.WorkshopDate.HasValue ? order.WorkshopDate.Value.ToString("dd/MM/yyyy") : "No date specified",
                     Description = $"a new workshop assigned to your location {order.Location.LocationName} {order.WorkshoLocation}",
                     Icon = "hurry.png",
-                    NotificationId = order.AssignedDate.ToLongTimeString() + "order" + user.Id
+                    NotificationId = order.AssignedDate.ToBinary() + "order" + user.Id
                 });
             }
 

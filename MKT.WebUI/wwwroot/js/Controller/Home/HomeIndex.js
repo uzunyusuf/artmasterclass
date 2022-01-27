@@ -3,14 +3,16 @@ var stokSayiData = [];
 var stokSayiColorBg = [];
 
 $(function () {
-    var currencyFunc = function (value, data) { return value + ' AUD';}
+    let currencyFunc = function (value, data) { return value + ' AUD';}
     createChartDonnutsByMorris('/Home/PriceTotalByLocation', 'priceTotalByLocation', currencyFunc);
     CreateChart('/Home/TotalOrderByLocation', 'totalOrderByLocation', null);
     CreateChart('/Home/PriceTotalByLocation', null, 'priceTotalByLocationLineChart');
-    apexLinechart("/Home/DailyTotalEarning", "dailyEarningChart");
+
+    let apexDailyFunc = function(value) { return value + " $"; }
+    apexLinechart("/Home/DailyTotalEarning", "dailyEarningChart",apexDailyFunc);
 });
 
-function apexLinechart(url, elemId) {
+function apexLinechart(url, elemId, formatFunc = null) {
     $.get(url, function(data, status) {
         let dataArray = [];
         let labelArray = [];
@@ -18,16 +20,17 @@ function apexLinechart(url, elemId) {
             dataArray.push(value.value);
             labelArray.push(value.label);
         });
-        var options = {
+        let options = {
             series: [
                 {
-                    name: "Daily Earning",
+                    name: "Daily Income",
                     data: dataArray
-                }],
+                }
+            ],
             chart: {
                 type: 'line',
                 height: 350,
-                zoom: {enabled: false}
+                zoom: { enabled: false }
             },
             dataLabes: { enabled: false },
             stroke: { curve: 'straight' },
@@ -37,8 +40,13 @@ function apexLinechart(url, elemId) {
                     opacity: 0.5
                 },
             },
-            xaxis: {categories: labelArray}
+            xaxis: { categories: labelArray }
+        };
+
+        if (formatFunc != null) {
+            options.yaxis = { labels: { formatter: formatFunc } };
         }
+
         let chart = new ApexCharts(document.querySelector('#'+elemId), options);
         chart.render();
     });
