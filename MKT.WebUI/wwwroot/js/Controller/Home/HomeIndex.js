@@ -33,7 +33,7 @@ function apexLinechart(url, elemId, formatFunc = null) {
                 zoom: { enabled: false }
             },
             dataLabes: { enabled: false },
-            stroke: { curve: 'straight' },
+            stroke: { curve: 'smooth' },
             grid: {
                 row: {
                     colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
