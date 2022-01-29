@@ -39,6 +39,7 @@
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Views\Announcement\AnnouncementList.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Appointment\AppointmentLocationList.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Home\Notifications.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Ticket\CreateTicket.cshtml" />
   </ItemGroup>
 
@@ -48,6 +49,10 @@
 
   <ItemGroup>
     <UpToDateCheckInput Remove="Views\Ticket\CreateTicket.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Home\Notifications.cshtml" />
   </ItemGroup>
 
 </Project>

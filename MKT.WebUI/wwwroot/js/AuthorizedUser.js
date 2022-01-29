@@ -15,24 +15,27 @@ var bildirimSayiBadgetString = `<span class="badge badge-danger badge-counter" i
 $(function() {
     $.get('/Home/GetNotifications',
         function (result) {
-            if (result.length > 0) {
-               
-            }
             let bildirimSayisi = 0;
             $.each(result,
                 function (index, item) {
-                    let tempNotification = notificationString;
-                    tempNotification = tempNotification.split('{notificationDate}').join(item.date);
-                    tempNotification = tempNotification.split('{notificationId}').join(item.notificationId);
-                    tempNotification = tempNotification.split('{notificationDescription}').join(item.description);
-                    tempNotification = tempNotification.split('{notificationIcon}').join(`/asset/icon/${item.icon}`);
-                    tempNotification = tempNotification.split('{notificationLink}').join(item.link);
-                    $('#notificationsArea').append(tempNotification);
-
-                    if (localStorage.getItem(item.notificationId) !== 'read') {
-                        bildirimSayisi++;
+                     if(index <= 4) {
+                        let tempNotification = notificationString;
+                        tempNotification = tempNotification.split('{notificationDate}').join(item.date);
+                        tempNotification = tempNotification.split('{notificationId}').join(item.notificationId);
+                        tempNotification = tempNotification.split('{notificationDescription}').join(item.description);
+                        tempNotification = tempNotification.split('{notificationIcon}').join(`/asset/icon/${item.icon}`);
+                        tempNotification = tempNotification.split('{notificationLink}').join(item.link);
+                         $('#notificationsArea').append(tempNotification);
+                         if (localStorage.getItem(item.notificationId) !== 'read') {
+                             bildirimSayisi++;
+                         }
                     }
                 });
+            if (result.length > 3) {
+                $('#notificationsArea')
+                    .append(
+                        `<a class="dropdown-item text-center small text-gray-500" href="/Home/Notifications">Show All Notifications</a>`);
+            }
             if (bildirimSayisi > 0) {
                 bildirimSayiBadgetString = bildirimSayiBadgetString.split('{bildirimSayisi}').join(bildirimSayisi);
                 $('#bildirimSayiBadget').append(bildirimSayiBadgetString);

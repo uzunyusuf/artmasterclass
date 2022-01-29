@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using MKT.Business.Abstract;
 using MKT.Business.Abstract.AppointmentsDB;
 using MKT.Core.DataAccess;
+using MKT.DataAccess.Constants;
 using MKT.DataAccess.Model.AppointmentApiModel;
 using MKT.DataAccess.Model.AppointmentDB;
 using MKT.DataAccess.Model.Core;
@@ -87,7 +88,7 @@ namespace MKT.Business.Concrete.AppointmentsDB
         public List<Notification> OrderNotifications()
         {
             var user = _userService.GetLoggedUser();
-            var orders = GetList(o => o.LocationId == user.LocationId, o => o.Location);
+            var orders = GetList(o => ((user.Rol.Equals(ROLE.ADMIN) || user.Rol.Equals(ROLE.MODERATOR)) || o.LocationId == user.LocationId) && o.AssignedDate > DateTime.Now.AddMonths(-1), o => o.Location).OrderByDescending(o => o.WorkshopDate);
             List<Notification> notifications = new List<Notification>();
             foreach (var order in orders)
             {
