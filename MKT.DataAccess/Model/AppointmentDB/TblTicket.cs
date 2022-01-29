@@ -25,9 +25,14 @@ namespace MKT.DataAccess.Model.AppointmentDB
         [Column(TypeName = "datetime")]
         public DateTime CreatedTime { get; set; }
         public bool Closed { get; set; }
+        [Column("AnsweredByID")]
+        public int? AnsweredById { get; set; }
 
+        [ForeignKey(nameof(AnsweredById))]
+        [InverseProperty(nameof(TblUser.TblTicketAnsweredBies))]
+        public virtual TblUser AnsweredBy { get; set; }
         [ForeignKey(nameof(TicketOwnerId))]
-        [InverseProperty(nameof(TblUser.TblTickets))]
+        [InverseProperty(nameof(TblUser.TblTicketTicketOwners))]
         public virtual TblUser TicketOwner { get; set; }
     }
 }

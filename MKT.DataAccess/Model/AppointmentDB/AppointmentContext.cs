@@ -79,8 +79,13 @@ namespace MKT.DataAccess.Model.AppointmentDB
 
                 entity.Property(e => e.Title).IsUnicode(false);
 
+                entity.HasOne(d => d.AnsweredBy)
+                    .WithMany(p => p.TblTicketAnsweredBies)
+                    .HasForeignKey(d => d.AnsweredById)
+                    .HasConstraintName("FK_Tbl_Ticket_AnsweredBy_Tbl_User");
+
                 entity.HasOne(d => d.TicketOwner)
-                    .WithMany(p => p.TblTickets)
+                    .WithMany(p => p.TblTicketTicketOwners)
                     .HasForeignKey(d => d.TicketOwnerId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Tbl_Ticket_TicketOwnerTbl_User");

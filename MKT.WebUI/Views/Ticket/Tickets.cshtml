@@ -5,6 +5,12 @@
     Layout = "_Layout";
 }
 
+<style>
+    .ticketList:hover {
+        color: #284FC2;
+    }
+</style>
+
 <div class="container">
     <div class="row">
         <div class="col-12">
@@ -16,7 +22,14 @@
                     <ul class="list-group">
                         @foreach (var ticket in Model.Tickets)
                         {
-                            <li class="list-group-item text-xs" style="cursor: pointer;" onclick="console.log('assert')">@ticket.Title <span class="float-right">@ticket.TicketOwner.NameSurname</span></li>
+                            <li class="list-group-item text-xs ticketList" style="cursor: pointer;" onclick="TicketDetails('@ticket.Id')">
+                                @ticket.Title
+                                @if (ticket.Closed)
+                                {
+                                    <span class="float-right badge badge-danger">Closed</span>
+                                }
+                                <span class="float-right">@ticket.TicketOwner.NameSurname</span>
+                            </li>
                         }
                     </ul>
                 </div>
@@ -27,5 +40,5 @@
 
 @section Scripts
 {
-    @*buraya script ekleyip tıklanan list elemeanının ticket detay sayfasına gitmesini ve orada cevaplama mekaniklerini yazalım*@
+    <script src="/js/Controller/Ticket/TicketList.js"></script>
 }

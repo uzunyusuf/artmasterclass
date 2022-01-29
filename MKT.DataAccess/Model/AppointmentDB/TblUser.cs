@@ -13,7 +13,8 @@ namespace MKT.DataAccess.Model.AppointmentDB
     {
         public TblUser()
         {
-            TblTickets = new HashSet<TblTicket>();
+            TblTicketAnsweredBies = new HashSet<TblTicket>();
+            TblTicketTicketOwners = new HashSet<TblTicket>();
         }
 
         [Key]
@@ -39,7 +40,9 @@ namespace MKT.DataAccess.Model.AppointmentDB
         [ForeignKey(nameof(LocationId))]
         [InverseProperty(nameof(TblLocation.TblUsers))]
         public virtual TblLocation Location { get; set; }
+        [InverseProperty(nameof(TblTicket.AnsweredBy))]
+        public virtual ICollection<TblTicket> TblTicketAnsweredBies { get; set; }
         [InverseProperty(nameof(TblTicket.TicketOwner))]
-        public virtual ICollection<TblTicket> TblTickets { get; set; }
+        public virtual ICollection<TblTicket> TblTicketTicketOwners { get; set; }
     }
 }

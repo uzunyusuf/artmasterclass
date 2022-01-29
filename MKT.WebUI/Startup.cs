@@ -34,7 +34,6 @@ namespace MKT.WebUI
 
             services.AddControllersWithViews();
 
-
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(co =>
             {
                 co.Events = new CookieAuthenticationEvents()

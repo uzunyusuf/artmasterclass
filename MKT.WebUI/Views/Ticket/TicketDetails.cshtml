@@ -1,0 +1,87 @@
+﻿@model MKT.WebUI.Models.Ticket.TicketDetailsViewModel
+
+@{
+    ViewBag.Title = "Ticket Details";
+    Layout = "_Layout";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow">
+                <div class="card-header">
+                    <h6 class="text-primary font-weight-bold">
+                        <div class="d-flex flex-row">
+                            <div class="mr-auto">
+                                <div class="d-flex flex-column">
+                                    <div>
+                                        Ticket Owner: @Model.Ticket.TicketOwner.NameSurname
+                                    </div>
+                                    <div>
+                                        @Model.Ticket.Title
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                Created Date: @Model.Ticket.CreatedTime.ToString("dd/MM/yyyy")
+                            </div>
+                        </div>
+                    </h6>
+                </div>
+                <div class="card-body">
+                    @*Ticket History*@
+                    
+                    <div class="container-fluid">
+                        
+                        @foreach (var th in Model.TicketHistory)
+                        {
+                            <div class="row mt-2">
+                                <div class="col-12">
+                                    <div class="card shadow">
+                                        <div class="card-header">
+                                            @(th.AnsweredBy != null ? "Answered:" + th.AnsweredBy.NameSurname : th.TicketOwner.NameSurname)
+                                        </div>
+                                        <div class="card-body">
+                                            @th.Description
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                        <div class="row mt-2">
+                            <div class="col-12">
+                                <div class="card shadow">
+                                    <div class="card-header">
+                                        @(Model.Ticket.AnsweredBy != null ? "Answered:" + Model.Ticket.AnsweredBy.NameSurname : Model.Ticket.TicketOwner.NameSurname)
+                                    </div>
+                                    <div class="card-body">
+                                        @Model.Ticket.Description
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-12 mt-2">
+            <div class="card shadow">
+                <div class="card-body">
+                    <form asp-controller="Ticket" asp-action="PostTicketAnswer" method="post">
+                        <input type="text" asp-for="Ticket.Id" class="d-none"/>
+                        <div class="form-group">
+                            <label><b>Add Answer:</b></label>
+                            <textarea asp-for="AddDescription" class="form-control" placeholder="Answer here..."></textarea>
+                        </div>
+
+                        <div class="row justify-content-end">
+                            <button class="btn btn-primary" type="button" onclick="PostWithRedirect(this, '/Ticket/Tickets')">Submit Answer</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
