@@ -57,8 +57,11 @@ namespace MKT.Business.Concrete.AppointmentsDB
 
             ticket.TicketOwner.TblTicketAnsweredBies = null;
             ticket.TicketOwner.TblTicketTicketOwners = null;
-            ticket.AnsweredBy.TblTicketAnsweredBies = null;
-            ticket.AnsweredBy.TblTicketTicketOwners = null;
+            if (ticket.AnsweredBy != null)
+            {
+                ticket.AnsweredBy.TblTicketAnsweredBies = null;
+                ticket.AnsweredBy.TblTicketTicketOwners = null;
+            }
             user.TblTicketAnsweredBies = null;
             user.TblTicketTicketOwners= null;
             

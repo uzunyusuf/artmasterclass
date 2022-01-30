@@ -10,7 +10,7 @@
 }
 
 @{
-    Order order = null;
+    OrderApiModel order = null;
 }
 
 <div class="container-fluid">
@@ -45,7 +45,7 @@
                             <tbody>
                                 @foreach (var locationOrder in Model.LocationOrder)
                                 {
-                                    order = JsonConvert.DeserializeObject<Order>(locationOrder.OrderJson);
+                                    order = System.Text.Json.JsonSerializer.Deserialize<OrderApiModel>(locationOrder.OrderJson);
                                     <tr>
                                         <td>@locationOrder.CustomerName</td>
                                         <td>@locationOrder.CustomerLastname</td>
@@ -60,7 +60,7 @@
                                         <td>@(locationOrder.WorkshopDate.HasValue ? locationOrder.WorkshopDate.Value.ToString("dd/MM/yyyy hh:mm:ss tt") : "No date time specified") </td>
                                         @if (User.IsInRole(ROLE.ADMIN) || User.IsInRole(ROLE.MODERATOR))
                                         {
-                                            <td>@(order != null ? string.Join(", ", order.PaymentGatewayNames) : "")</td>
+                                            <td>@(order != null ? string.Join(", ", order.Order.PaymentGatewayNames) : "")</td>
                                         }
                                     </tr>
                                 }

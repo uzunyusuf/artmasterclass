@@ -9,7 +9,7 @@ using MKT.DataAccess.Model.AppointmentDB;
 namespace MKT.DataAccess.Model.AppointmentApiModel
 {
     // AppointmentApiModel myDeserializedClass = JsonSerializer.Deserialize<AppointmentApiModel>(myJsonResponse);
-    public class ClientDetails
+    public partial class ClientDetails
     {
         [JsonPropertyName("accept_language")]
         public string AcceptLanguage { get; set; }
@@ -30,7 +30,7 @@ namespace MKT.DataAccess.Model.AppointmentApiModel
         public string UserAgent { get; set; }
     }
 
-    public class ShopMoney
+    public partial class ShopMoney
     {
         [JsonPropertyName("amount")]
         public string Amount { get; set; }
@@ -39,7 +39,7 @@ namespace MKT.DataAccess.Model.AppointmentApiModel
         public string CurrencyCode { get; set; }
     }
 
-    public class PresentmentMoney
+    public partial class PresentmentMoney
     {
         [JsonPropertyName("amount")]
         public string Amount { get; set; }
@@ -48,7 +48,7 @@ namespace MKT.DataAccess.Model.AppointmentApiModel
         public string CurrencyCode { get; set; }
     }
 
-    public class CurrentSubtotalPriceSet
+    public partial class CurrentSubtotalPriceSet
     {
         [JsonPropertyName("shop_money")]
         public ShopMoney ShopMoney { get; set; }
@@ -57,7 +57,7 @@ namespace MKT.DataAccess.Model.AppointmentApiModel
         public PresentmentMoney PresentmentMoney { get; set; }
     }
 
-    public class CurrentTotalDiscountsSet
+    public partial class CurrentTotalDiscountsSet
     {
         [JsonPropertyName("shop_money")]
         public ShopMoney ShopMoney { get; set; }
@@ -66,7 +66,7 @@ namespace MKT.DataAccess.Model.AppointmentApiModel
         public PresentmentMoney PresentmentMoney { get; set; }
     }
 
-    public class CurrentTotalPriceSet
+    public partial class CurrentTotalPriceSet
     {
         [JsonPropertyName("shop_money")]
         public ShopMoney ShopMoney { get; set; }
@@ -75,7 +75,7 @@ namespace MKT.DataAccess.Model.AppointmentApiModel
         public PresentmentMoney PresentmentMoney { get; set; }
     }
 
-    public class CurrentTotalTaxSet
+    public partial class CurrentTotalTaxSet
     {
         [JsonPropertyName("shop_money")]
         public ShopMoney ShopMoney { get; set; }
@@ -96,7 +96,7 @@ namespace MKT.DataAccess.Model.AppointmentApiModel
         public string Type { get; set; }
     }
 
-    public class NoteAttribute
+    public partial class NoteAttribute
     {
         [JsonPropertyName("name")]
         public string Name { get; set; }
@@ -105,7 +105,7 @@ namespace MKT.DataAccess.Model.AppointmentApiModel
         public string Value { get; set; }
     }
 
-    public class SubtotalPriceSet
+    public partial class SubtotalPriceSet
     {
         [JsonPropertyName("shop_money")]
         public ShopMoney ShopMoney { get; set; }
@@ -114,7 +114,7 @@ namespace MKT.DataAccess.Model.AppointmentApiModel
         public PresentmentMoney PresentmentMoney { get; set; }
     }
 
-    public class PriceSet
+    public partial class PriceSet
     {
         [JsonPropertyName("shop_money")]
         public ShopMoney ShopMoney { get; set; }
@@ -123,7 +123,7 @@ namespace MKT.DataAccess.Model.AppointmentApiModel
         public PresentmentMoney PresentmentMoney { get; set; }
     }
 
-    public class TaxLine
+    public partial class TaxLine
     {
         [JsonPropertyName("price")]
         public string Price { get; set; }
@@ -141,7 +141,7 @@ namespace MKT.DataAccess.Model.AppointmentApiModel
         public bool ChannelLiable { get; set; }
     }
 
-    public class TotalDiscountsSet
+    public partial class TotalDiscountsSet
     {
         [JsonPropertyName("shop_money")]
         public ShopMoney ShopMoney { get; set; }
@@ -150,7 +150,7 @@ namespace MKT.DataAccess.Model.AppointmentApiModel
         public PresentmentMoney PresentmentMoney { get; set; }
     }
 
-    public class TotalLineItemsPriceSet
+    public partial class TotalLineItemsPriceSet
     {
         [JsonPropertyName("shop_money")]
         public ShopMoney ShopMoney { get; set; }
@@ -159,7 +159,7 @@ namespace MKT.DataAccess.Model.AppointmentApiModel
         public PresentmentMoney PresentmentMoney { get; set; }
     }
 
-    public class TotalPriceSet
+    public partial class TotalPriceSet
     {
         [JsonPropertyName("shop_money")]
         public ShopMoney ShopMoney { get; set; }
@@ -168,7 +168,7 @@ namespace MKT.DataAccess.Model.AppointmentApiModel
         public PresentmentMoney PresentmentMoney { get; set; }
     }
 
-    public class TotalShippingPriceSet
+    public partial class TotalShippingPriceSet
     {
         [JsonPropertyName("shop_money")]
         public ShopMoney ShopMoney { get; set; }
@@ -177,7 +177,7 @@ namespace MKT.DataAccess.Model.AppointmentApiModel
         public PresentmentMoney PresentmentMoney { get; set; }
     }
 
-    public class TotalTaxSet
+    public partial class TotalTaxSet
     {
         [JsonPropertyName("shop_money")]
         public ShopMoney ShopMoney { get; set; }
@@ -186,7 +186,7 @@ namespace MKT.DataAccess.Model.AppointmentApiModel
         public PresentmentMoney PresentmentMoney { get; set; }
     }
 
-    public class BillingAddress
+    public partial class BillingAddress
     {
         [JsonPropertyName("first_name")]
         public string FirstName { get; set; }
@@ -234,7 +234,7 @@ namespace MKT.DataAccess.Model.AppointmentApiModel
         public string ProvinceCode { get; set; }
     }
 
-    public class DefaultAddress
+    public partial class DefaultAddress
     {
         [JsonPropertyName("id")]
         public object Id { get; set; }
@@ -288,7 +288,7 @@ namespace MKT.DataAccess.Model.AppointmentApiModel
         public bool Default { get; set; }
     }
 
-    public class Customer
+    public partial class Customer
     {
         [JsonPropertyName("id")]
         public object Id { get; set; }
@@ -390,7 +390,7 @@ namespace MKT.DataAccess.Model.AppointmentApiModel
         public string Code { get; set; }
     }
 
-    public class OriginLocation
+    public partial class OriginLocation
     {
         [JsonPropertyName("id")]
         public object Id { get; set; }
@@ -417,7 +417,7 @@ namespace MKT.DataAccess.Model.AppointmentApiModel
         public string Zip { get; set; }
     }
 
-    public class Property
+    public partial class Property
     {
         [JsonPropertyName("name")]
         public string Name { get; set; }
@@ -426,7 +426,7 @@ namespace MKT.DataAccess.Model.AppointmentApiModel
         public string Value { get; set; }
     }
 
-    public class TotalDiscountSet
+    public partial class TotalDiscountSet
     {
         [JsonPropertyName("shop_money")]
         public ShopMoney ShopMoney { get; set; }
@@ -456,7 +456,7 @@ namespace MKT.DataAccess.Model.AppointmentApiModel
         public int DiscountApplicationIndex { get; set; }
     }
 
-    public class LineItem
+    public partial class LineItem
     {
         [JsonPropertyName("id")]
         public object Id { get; set; }
@@ -543,7 +543,7 @@ namespace MKT.DataAccess.Model.AppointmentApiModel
         public List<DiscountAllocation> DiscountAllocations { get; set; }
     }
 
-    public class PaymentDetails
+    public partial class PaymentDetails
     {
         [JsonPropertyName("credit_card_bin")]
         public string CreditCardBin { get; set; }
@@ -561,7 +561,7 @@ namespace MKT.DataAccess.Model.AppointmentApiModel
         public string CreditCardCompany { get; set; }
     }
 
-    public class Order
+    public partial class Order
     {
         public TblOrder LocationOrder { get; set; }
 
@@ -818,7 +818,7 @@ namespace MKT.DataAccess.Model.AppointmentApiModel
         public List<object> ShippingLines { get; set; }
     }
 
-    public class AppointmentApiModel
+    public partial class AppointmentApiModel
     {
         [JsonPropertyName("orders")]
         public List<Order> Orders { get; set; }

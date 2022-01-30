@@ -5,6 +5,7 @@ using MKT.Core.DataAccess;
 using MKT.DataAccess.Model.AppointmentApiModel;
 using MKT.DataAccess.Model.AppointmentDB;
 using MKT.DataAccess.Model.Core;
+using LineItem = MKT.DataAccess.Model.AppointmentApiModel.LineItem;
 
 namespace MKT.Business.Abstract.AppointmentsDB
 {

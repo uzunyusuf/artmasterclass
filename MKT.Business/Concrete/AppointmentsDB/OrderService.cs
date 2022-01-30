@@ -13,6 +13,8 @@ using MKT.DataAccess.Model.AppointmentApiModel;
 using MKT.DataAccess.Model.AppointmentDB;
 using MKT.DataAccess.Model.Core;
 using Newtonsoft.Json;
+using JsonSerializer = System.Text.Json.JsonSerializer;
+using LineItem = MKT.DataAccess.Model.AppointmentApiModel.LineItem;
 
 namespace MKT.Business.Concrete.AppointmentsDB
 {
@@ -55,7 +57,7 @@ namespace MKT.Business.Concrete.AppointmentsDB
             else
             {
                 var lineItemsString = JsonConvert.SerializeObject(order.Order.LineItems);
-                var orderJson = JsonConvert.SerializeObject(order);
+                var orderJson = JsonSerializer.Serialize(order);
 
                 var locationOrder = new TblOrder
                 {
